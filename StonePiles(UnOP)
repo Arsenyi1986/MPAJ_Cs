@@ -1,0 +1,75 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        int q0 = Convert.ToInt32(Console.ReadLine());
+        int q = q0;
+        int[] w = new int[q];
+        q--;
+        int res = 0;
+
+        while (q >= 0)
+        {
+
+            w[q] = Convert.ToInt32(Console.ReadLine());
+            q--;
+
+        }
+
+        int fp = 0;
+        int sp = 0;
+
+        for (int len = Convert.ToByte(q0) - 1; len >= 0; len--)
+        {
+            int max = 0;
+            int ind = 0;
+
+            for (int sublen = Convert.ToByte(q0) - 1; sublen >= 0; sublen--)
+            {
+
+                if (w[sublen] > max)
+                {
+
+                    max = w[sublen];
+                    ind = sublen;
+                    
+
+                }
+
+            }
+
+            if (fp < sp || (fp == 0 && sp == 0))
+            {
+
+                fp += max;
+
+            }
+            else 
+            {
+
+                sp += max;
+            
+            }
+                w[ind] = 0;
+
+        }
+
+        if (fp - sp < 0)
+        {
+
+            res = (fp - sp) * -1;
+
+        }
+        else
+        {
+
+            res = fp - sp;
+        
+        }
+
+        Console.WriteLine(res);
+
+    }
+}
