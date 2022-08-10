@@ -1,0 +1,35 @@
+using System;
+class Prog
+{
+
+    static void Main()
+    {
+
+        int q = Convert.ToInt32(Console.ReadLine());
+        int[] arr = new int[q];
+
+        foreach (int i in arr)
+        {
+
+            arr[i] = Convert.ToInt32(Console.ReadLine());
+            arr[i] = Finder(arr[i]);
+        
+        }
+    
+    }
+
+
+
+    public static int Finder(int input)
+    {
+
+        for (int i = 0; i < 100; i++)
+        { 
+        
+            if (i )
+        
+        }
+    
+    }
+
+}
