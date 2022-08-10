@@ -7,51 +7,71 @@ class Prog
 
         int N = Convert.ToInt32(Console.ReadLine());
         int Q = 1;
+       
 
         int res = 0;
-        int dig = 1;
 
         while (res == 0)
         {
+            int Qc = Q;
+            int Qc2 = Q;
+            int dig = 0;
 
-            while (Q > 0)
+            while (Qc > 0)
             {
 
-                Q = Q / 10;
+                Qc = Qc / 10;
                 dig++;
-            
+
             }
 
             int mult = 1;
-            int [] arr = new int[dig];
+            int[] arr = new int[dig];
 
-            for (; dig > 0;)
+            while (dig > 0)
             {
-
+                int delitel = 10;
                 dig--;
+                int digc = dig;
+                while (digc > 1)
+                {
 
-                mult *= Convert.ToInt32(Q / Math.Pow(10, dig));
-                arr[dig] = Convert.ToInt32(Q / Math.Pow(10, dig));
+                    digc--;
+                    delitel *= 10;
+                    
 
+                }
+
+                mult *= Qc2 / delitel;
+                arr[dig] = Qc2 / delitel;
+                Qc2 = Qc2 % delitel;
 
             }
 
             if (mult == N)
             {
 
-                foreach (int n in arr)
+                for (int n = 0; n < arr.Length; n++)
                 {
-                
-                    Console.WriteLine(n);
-                
+
+                    Console.Write(arr[n]);
+
                 }
 
                 break;
-            
+
             }
 
+            //if (Q > 1000)
+            //{
+
+             //   Console.WriteLine("-1");
+             //   break;
+            
+            //}
+
             Q++;
-        
+
         }
 
     }
