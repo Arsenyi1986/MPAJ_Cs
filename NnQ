@@ -4,75 +4,93 @@ class Prog
 {
     private static void Main()
     {
-
-        int N = Convert.ToInt32(Console.ReadLine());
-        int Q = 1;
-       
-
-        int res = 0;
-
-        while (res == 0)
+        while (true)
         {
-            int Qc = Q;
-            int Qc2 = Q;
-            int dig = 0;
+            int N = Convert.ToInt32(Console.ReadLine());
+            int Q = N;
 
-            while (Qc > 0)
+            if (N % 2 != 0 && N % 3 != 0 && N % 5 != 0 && N % 7 != 0)
             {
 
-                Qc = Qc / 10;
-                dig++;
-
-            }
-
-            int mult = 1;
-            int[] arr = new int[dig];
-
-            while (dig > 0)
-            {
-                int delitel = 10;
-                dig--;
-                int digc = dig;
-                while (digc > 1)
-                {
-
-                    digc--;
-                    delitel *= 10;
-                    
-
-                }
-
-                mult *= Qc2 / delitel;
-                arr[dig] = Qc2 / delitel;
-                Qc2 = Qc2 % delitel;
-
-            }
-
-            if (mult == N)
-            {
-
-                for (int n = 0; n < arr.Length; n++)
-                {
-
-                    Console.Write(arr[n]);
-
-                }
-
+                Console.WriteLine("-1");
                 break;
-
+            
+            }
+            else if (N % 11 == 0)
+            { 
+                Console.WriteLine("-1");
+                break;
             }
 
-            //if (Q > 1000)
-            //{
+                while (true)
+                {
+                    int Qc = Q;
+                    int Qc2 = Q;
+                    int dig = 0;
 
-             //   Console.WriteLine("-1");
-             //   break;
-            
-            //}
+                    while (Qc > 0)
+                    {
 
-            Q++;
+                        Qc = Qc / 10;
+                        dig++;
 
+                    }
+
+                    int mult = 1;
+                    int[] arr = new int[dig];
+
+                    while (dig > 0)
+                    {
+                        int delitel = 10;
+                        dig--;
+                        int digc = dig;
+
+
+                            while (digc > 1)
+                            {
+
+                                digc--;
+                                delitel *= 10;
+
+
+                            }
+
+                        if (dig == 0)
+                        {
+
+                            mult *= Qc2;
+                            arr[dig] = Qc2;
+
+
+                        }
+                        else
+                        {
+
+                            mult *= Qc2 / delitel;
+                            arr[dig] = Qc2 / delitel;
+                            Qc2 = Qc2 % delitel;
+
+                        }
+
+                    }
+
+                    if (mult == N)
+                    {
+
+                        for (int n = arr.Length - 1; n >= 0; n--)
+                        {
+
+                            Console.Write(arr[n]);
+
+                        }
+
+                        break;
+
+                    }
+
+                    Q++;
+
+                }
         }
-
     }
 }
