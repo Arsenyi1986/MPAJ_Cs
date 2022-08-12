@@ -13,9 +13,15 @@ class Prog
 
             arr[i] = Convert.ToInt32(Console.ReadLine());
             arr[i] = Finder(arr[i]);
-        
+
         }
-    
+
+        foreach (int i in arr)
+        {
+
+            Console.WriteLine(i);
+
+        }
     }
 
 
@@ -23,13 +29,33 @@ class Prog
     public static int Finder(int input)
     {
 
-        for (int i = 0; i < 100; i++)
-        { 
-        
-            if (i )
-        
+        int count = 1;
+
+        for (int i = 3; i < 1000; i++)
+        {
+
+            if (i % 3 != 0 && i % 5 != 0 && i % 7 != 0 && i % 11 != 0)
+            {
+
+                continue;
+
+            }
+            else
+            {
+
+                count++;
+                if (input == count)
+                {
+
+                    return i;
+
+                }
+            }
+
         }
-    
+
+        return -1;
+
     }
 
 }
