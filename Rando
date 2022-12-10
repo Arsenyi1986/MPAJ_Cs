@@ -1,0 +1,53 @@
+using System;
+public class Task1
+{
+
+    public static void Main()
+    {
+        int n = Convert.ToInt32(Console.ReadLine());
+        string s = "Tinkoff";
+        string b = "BYBYBYB";
+        int temp = 0;
+        foreach (char i in s)
+        {
+          if(i.Equals(' '))
+          {
+            temp += 1;
+          }
+        }
+        int[] mem = new int[temp];
+        int j = 0;
+        
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (s[i].Equals(' '))
+            {
+                b = b.Insert(i, " ");
+                mem[j] = i;
+                j++;
+            }
+        }
+        
+        int count = 0;
+        int lcount = 0;
+        for (int i = 0; i < b.Length-1; i++)
+        {
+            if (b[i].Equals(' '))
+            {
+                lcount += 1;
+            }
+            if (b[i].Equals(b[i+1]))
+            {
+                count += 1;
+                if (lcount < mem.Length && mem.Length != 0)
+                {
+                    i = mem[lcount];
+                    lcount += 1;
+                }else{
+                    break;
+                }
+            }
+        }
+        Console.WriteLine(count);
+    }
+}
